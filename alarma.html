@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOSIMED - Alarma</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td><a href="paciente.html">Paciente</a></td>
+                <td><a href="paciente.html">Fórmula</a></td>
+                <td>Alarma</td>
+                <td><a href="medicamento.html">Medicamentos</a></td>
+            </tr>
+        </table>
+
+        <form action="" method="post">
+            <label for="formulas">Mis fórmulas</label>
+            <select id="formulas">
+                <option value="formula1">001 - Fórmula 1</option>
+                <option value="formula2">002 - Fórmula 2</option>
+                <option value="formula3">003 - Fórmula 3</option>
+            </select>
+
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Medicamento</th>
+                    <th>Cantidad</th>
+                    <th>Dosificación</th>
+                    <th>Alarma</th>
+                    <th>Fecha inicio</th>
+                    <th>Fecha fin</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Acetaminofén 500 mg.</td>
+                    <td>12</td>
+                    <td>8</td>
+                    <td><input type="checkbox" checked /></td>
+                    <td>01/05/2016</td>
+                    <td>31/05/2016</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ciprofloxacina 400 mg.</td>
+                    <td>14</td>
+                    <td>12</td>
+                    <td><input type="checkbox" checked /></td>
+                    <td>01/05/2016</td>
+                    <td>31/05/2016</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Guardar" />
+        </form>
+    </body>
+</html>
