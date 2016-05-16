@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOSIMED</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">DOSIMED</a>
+			</div>
+		
+			<div class="container">
+				<ul id="menuindex" class="nav navbar-nav" style="display: block;">
+					<li class="active"><a href="#">Bienvenido</a></li>
+				</ul>
+			
+				<ul id="menupaciente" class="nav navbar-nav" style="display: none;">
+					<li class="active"><a href="#">Paciente</a></li>
+					<li><a href="#" onclick="mostrarMedicamento();">Medicamentos</a></li>
+					<li><a href="#" onclick="mostrarFormula();">Fórmula</a></li>
+					<li><a href="#" onclick="mostrarAlarma();">Alarma</a></li>
+				</ul>
+
+				<ul id="menumedicamento" class="nav navbar-nav" style="display: none;">
+					<li><a href="#" onclick="mostrarPaciente();">Paciente</a></li>
+					<li class="active"><a href="#">Medicamentos</a></li>
+					<li><a href="#" onclick="mostrarFormula();">Fórmula</a></li>
+					<li><a href="#" onclick="mostrarAlarma();">Alarma</a></li>
+				</ul>
+				
+				<ul id="menuformula" class="nav navbar-nav" style="display: none;">
+					<li><a href="#" onclick="mostrarPaciente();">Paciente</a></li>
+					<li><a href="#" onclick="mostrarMedicamento();">Medicamentos</a></li>
+					<li class="active"><a href="#">Fórmula</a></li>
+					<li><a href="#" onclick="mostrarAlarma();">Alarma</a></li>
+				</ul>
+				
+				<ul id="menualarma" class="nav navbar-nav" style="display: none;">
+					<li><a href="#" onclick="mostrarPaciente();">Paciente</a></li>
+					<li><a href="#" onclick="mostrarMedicamento();">Medicamentos</a></li>
+					<li><a href="#" onclick="mostrarFormula();">Fórmula</a></li>
+					<li class="active"><a href="#">Alarma</a></li>
+				</ul>
+				<div id="nombreUsuario" style="float: right;"></div>
+			</div>
+		</nav>
+		
+		<div id="index" class="container" style="display: block; width: 50%;">
+			<form role="form" class="form-horizontal">
+				<label for="usuario">Usuario </label>
+				<input type="text" id="usuario" name="usuario" class="form-control" />
+				
+				<label for="contrasena">Contraseña </label>
+				<input type="password" id="contrasena" name="contrasena" class="form-control" />
+				
+				<input class="btn btn-primary form-control" onclick="mostrarPaciente();" value="Ingresar" />
+			</form>
+		</div>
+
+		<div id="paciente" class="container" style="display: none;">
+			<form role="form">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<td><label for="identificacion">Identificación: </label></td>
+							<td><input class="form-control" type="text" id="identificacion" name="identificacion" /></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><label for="nombres">Nombres: </label></td>
+							<td><input class="form-control" type="text" id="nombres" /></td>
+							<td><label for="apellidos">Apellidos: </label></td>
+							<td><input class="form-control" type="text" id="apellidos" /></td>
+						</tr>
+						<tr>
+							<td><label for="direccion">Dirección:</label></td>
+							<td><input class="form-control" type="text" id="direccion"></td>
+							<td><label for="telefono">Teléfono:</label></td>
+							<td><input class="form-control" type="text" id="telefono"></td>
+						</tr>
+						<tr>
+							<td><label for="email">E-mail: </label></td>
+							<td><input class="form-control" type="text" id="email"></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><label for="usuario">Usuario:</label></td>
+							<td><input class="form-control" type="text" id="usuario"></td>
+							<td><label for="contrasena">Contraseña:</label></td>
+							<td><input class="form-control" type="text" id="contrasena"></td>
+						</tr>
+					</table>
+				</div>
+				
+				<input type="button" class="btn btn-primary" value="Guardar" onclick="mostrarMedicamento()" />
+			</form>
+		</div>
+		
+		<div id="medicamento" class="container" style="display: none;">
+			<form role="form">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<td><label for="codigo">Código medicamento. </label></td>
+							<td><input class="form-control" type="text" id="codigo" /></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><label for="nombreMedicamento">Nombre: </label></td>
+							<td><input class="form-control" type="text" id="nombreMedicamento" /></td>
+							<td><label for="concentracion">Concentración: </label></td>
+							<td><input class="form-control" type="text" id="concentracion" /></td>
+						</tr>
+						<tr>
+							<td><label for="presentacion">Presentación: </label></td>
+							<td>
+								<select class="form-control" id="presentacion">
+									<option value="pasta">Pasta</option>
+									<option value="inyeccion">Inyección</option>
+									<option value="jaraba">Jarabe</option>
+								</select>
+							</td>
+							<td><label for="vencimiento">Vencimiento: </label></td>
+							<td><input class="form-control" type="date" id="vencimiento" /></td>
+						</tr>
+					</table>
+
+					<input class="btn btn-primary" type="button" value="Guardar" onclick="mostrarFormula();" />
+				</div>
+			</form>
+		</div>
+		
+		<div id="formula" class="container" style="display: none;">
+			<form role="form" action="" method="post">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<td><label for="numeroformula">Formula Nro. </label></td>
+							<td><input class="form-control" type="text" id="numeroformula" /></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><label for="identificacionPaciente">Identificación: </label></td>
+							<td><input class="form-control" type="text" id="identificacionPaciente" /></td>
+							<td><label for="nombreCompleto">Nombre: </label></td>
+							<td><input class="form-control" type="text" id="nombreCompleto" /></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<tr>
+							<th>Item</th>
+							<th>Medicamento</th>
+							<th>Cantidad</th>
+							<th>Dosificación</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><div id="formulaMedicamento" /></td>
+							<td><input type="text" id="cantidadMedicamento" size="3" /></td>
+							<td><input type="text" id="dosisMedicamento" size="3" /></td>
+						</tr>
+					</table>
+				</div>
+
+				<input class="btn btn-primary" type="button" value="Guardar" onclick="mostrarAlarma();" />
+			</form>
+		</div>
+		
+		<div id="alarma" class="container" style="display: none;">
+			<form role="form" action="" method="post">
+				<div class="form-group">
+					<label for="formulas">Mis fórmulas</label>
+					<select class="form-control" id="formulas"></select>
+				</div>
+
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<tr>
+							<th>Item</th>
+							<th>Medicamento</th>
+							<th>Cantidad</th>
+							<th>Dosificación</th>
+							<th>Alarma</th>
+							<th>Fecha inicio</th>
+							<th>Fecha fin</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td><div id="medicamentoAlarma" /></td>
+							<td><div id="cantidadAlarma" /></td>
+							<td><div id="dosisAlarma" /></td>
+							<td><input type="checkbox" id="checkAlarma" /></td>
+							<td><input type="date" id="fechaInicio" /></td>
+							<td><input type="date" id="fechaFin" /></td>
+						</tr>
+					</table>
+				</div>
+
+				<input class="btn btn-primary" type="button" value="Guardar" onclick="programarAlarma();" />
+			</form>
+		
+		</div>		
+
+		<script type="text/javascript">
+			function mostrarIndex() {
+				document.getElementById("menuindex").style.display = 'block';
+				document.getElementById("menupaciente").style.display = 'none';
+				document.getElementById("menumedicamento").style.display = 'none';
+				document.getElementById("menuformula").style.display = 'none';
+				document.getElementById("menualarma").style.display = 'none';
+				
+				document.getElementById("index").style.display = 'block';
+				document.getElementById("paciente").style.display = 'none';
+				document.getElementById("medicamento").style.display = 'none';
+				document.getElementById("formula").style.display = 'none';
+				document.getElementById("alarma").style.display = 'none';
+			}
+			
+			function mostrarPaciente() {
+				if (document.getElementById("usuario").value == "") {
+					alert('Debe definir un nombre de usuario.');
+				} else {
+					document.getElementById("menuindex").style.display = 'none';
+					document.getElementById("menupaciente").style.display = 'block';
+					document.getElementById("menumedicamento").style.display = 'none';
+					document.getElementById("menuformula").style.display = 'none';
+					document.getElementById("menualarma").style.display = 'none';
+					
+					document.getElementById("index").style.display = 'none';
+					document.getElementById("paciente").style.display = 'block';
+					document.getElementById("medicamento").style.display = 'none';
+					document.getElementById("formula").style.display = 'none';
+					document.getElementById("alarma").style.display = 'none';
+					
+					document.getElementById("nombreUsuario").innerHTML = document.getElementById("usuario").value;
+				}
+			}
+			
+			function mostrarMedicamento() {
+				if (document.getElementById("identificacion").value == "") {
+					alert('Debe especificar una identificación.');
+				} else if (document.getElementById("nombres").value == "") {
+					alert('Debe especificar el nombre.');
+				} else if (document.getElementById("apellidos").value == "") {
+					alert('Debe especificar los apellidos.');
+				} else {
+					document.getElementById("menuindex").style.display = 'none';
+					document.getElementById("menupaciente").style.display = 'none';
+					document.getElementById("menumedicamento").style.display = 'block';
+					document.getElementById("menuformula").style.display = 'none';
+					document.getElementById("menualarma").style.display = 'none';
+					
+					document.getElementById("index").style.display = 'none';
+					document.getElementById("paciente").style.display = 'none';
+					document.getElementById("medicamento").style.display = 'block';
+					document.getElementById("formula").style.display = 'none';
+					document.getElementById("alarma").style.display = 'none';
+				}
+			}
+			
+			function mostrarFormula() {
+				if (document.getElementById("nombreMedicamento").value == "") {
+					alert('Debe especificar un nombre.');
+				} else {
+					document.getElementById("menuindex").style.display = 'none';
+					document.getElementById("menupaciente").style.display = 'none';
+					document.getElementById("menumedicamento").style.display = 'none';
+					document.getElementById("menuformula").style.display = 'block';
+					document.getElementById("menualarma").style.display = 'none';
+					
+					document.getElementById("index").style.display = 'none';
+					document.getElementById("paciente").style.display = 'none';
+					document.getElementById("medicamento").style.display = 'none';
+					document.getElementById("formula").style.display = 'block';
+					document.getElementById("alarma").style.display = 'none';
+					
+					document.getElementById("identificacionPaciente").value = document.getElementById("identificacion").value;
+					document.getElementById("nombreCompleto").value = document.getElementById("nombres").value + ' ' + document.getElementById("apellidos").value;
+					document.getElementById("formulaMedicamento").innerHTML = document.getElementById("nombreMedicamento").value + ' ' + document.getElementById("concentracion").value;
+				}
+			}
+			
+			function mostrarAlarma() {
+				if (document.getElementById("numeroformula").value == "") {
+					alert('Debe especificar un número de fórmula.');
+				} else if (document.getElementById("cantidadMedicamento").value == "") {
+					alert('Debe especificar una cantidad.');
+				} else if (document.getElementById("dosisMedicamento").value == "") {
+					alert('Debe especificar una dosis.');
+				} else {
+					document.getElementById("menuindex").style.display = 'none';
+					document.getElementById("menupaciente").style.display = 'none';
+					document.getElementById("menumedicamento").style.display = 'none';
+					document.getElementById("menuformula").style.display = 'none';
+					document.getElementById("menualarma").style.display = 'block';
+					
+					document.getElementById("index").style.display = 'none';
+					document.getElementById("paciente").style.display = 'none';
+					document.getElementById("medicamento").style.display = 'none';
+					document.getElementById("formula").style.display = 'none';
+					document.getElementById("alarma").style.display = 'block';
+					
+					var elementoFormulas = document.getElementById("formulas");
+					var opcion = document.createElement("option");
+						opcion.text = document.getElementById("numeroformula").value;
+						elementoFormulas.remove(elementoFormulas.selectedIndex);
+						elementoFormulas.add(opcion);
+					
+					document.getElementById("medicamentoAlarma").innerHTML = document.getElementById("formulaMedicamento").innerHTML;
+					document.getElementById("cantidadAlarma").innerHTML = document.getElementById("cantidadMedicamento").value;
+					document.getElementById("dosisAlarma").innerHTML = document.getElementById("dosisMedicamento").value;
+				}
+			}
+			
+			function programarAlarma() {
+				var textoProgramada = 'Alarma programada entre ' + document.getElementById("fechaInicio").value + ' y ' + document.getElementById("fechaFin").value;
+			
+				if (document.getElementById("checkAlarma").checked) {
+					if (document.getElementById("fechaInicio").value == "" || document.getElementById("fechaFin").value == "") {
+						alert('Defina las fechas de inicio y finalización de la alarma.');
+					} else {
+						alert(textoProgramada);
+					}
+					
+				} else {
+					alert('Alarma desactivada.');
+				}
+				
+			}
+		</script>
+    </body>
+</html>
